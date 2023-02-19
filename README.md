@@ -5,9 +5,9 @@ a widget that gets user input and displays output to the user. It uses the beaut
 
 ## Installations and imports
 '''
-$ pip install beautifulsoup4
-$ pip install urllib
-
+$ pip install beautifulsoup4  
+$ pip install urllib'''   
+'''
 import wx  
 from bs4 import BeautifulSoup  
 import urllib.request
