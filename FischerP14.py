@@ -1,13 +1,11 @@
-#FischerP14
-#Programmer: Mary Fischer
-#Email: mfischer7.edu
-#Purpose: Create a screen scraping app that lets the user enter the url they want to screen scrape
+# Programmer: Mary Fischer
+# Purpose: Create a screen scraping app that lets the user enter the url and the content they want to scrape
 
 import wx
 
-#define functions 
+# define functions 
 def Submit(event):
-    #this is the screen scraping code from class - I added the try except and adapted it for a GUI and to write to a file
+    # this screen scraping code is modified from a course - I added the try except and adapted it for a GUI and to write to a file
     from bs4 import BeautifulSoup  
     import urllib.request
     try:
@@ -18,8 +16,8 @@ def Submit(event):
     soup = BeautifulSoup(html_doc, 'html.parser')
     anchortags = soup.find_all('a')
 
-    #check if file exists, if not, create and open it; write to it: tag['href'], save and close file
-    #reference: https://www.w3schools.com/python/python_file_remove.asp
+    # check if file exists, if not, create and open it; write to it: tag['href'], save and close file
+    # reference: https://www.w3schools.com/python/python_file_remove.asp
     import os
     if os.path.exists(filename.GetValue()):
         msg.SetValue('That file already exists. Please choose another file name.')
@@ -33,13 +31,13 @@ def Submit(event):
         except IOError:
             msg.SetValue('Unable to open file.')
 
-#displays the screen scrapoing results in the GUI window
+# display the screen scraping results in the GUI window
 def Open(event):
     f = open(filename.GetValue(), "r")
     msg.SetValue(f.read())
     f.close()
 
-#clears all the boxes and resets the msg box
+# clear all the boxes and resets the msg box
 def Clear(event):
     filename.SetValue('')
     msg.SetValue('Enter a web site URL above, exactly as it is shown in the address bar.\
@@ -47,14 +45,15 @@ def Clear(event):
     url.SetValue('')
 
 
-#Create GUI
-#reference: https://letscodepython.com/blog/2017/12/27/building-guis-wxpython/
-           #https://wxpython.org/Phoenix/docs/html/wx.TextCtrl.html?highlight=textctrl#phoenix-title-textctrl-styles
+# Create GUI
+# references: 
+# https://letscodepython.com/blog/2017/12/27/building-guis-wxpython/
+# https://wxpython.org/Phoenix/docs/html/wx.TextCtrl.html?highlight=textctrl#phoenix-title-textctrl-styles
 app = wx.App()
 win = wx.Frame(None, title = "Welcome to the Screen Scraper App", size = (590,530)) 
 bkg = wx.Panel(win) #the panel object in the background to deal with resizing
 
-#add controls (5)
+# add controls (5)
 urlLabel = wx.StaticText(bkg, label = 'Enter URL')
 url = wx.TextCtrl(bkg)
 submit = wx.Button(bkg, label = 'SUBMIT')
@@ -66,14 +65,14 @@ filenameLabel = wx.StaticText(bkg, label = 'Enter Filename:')
 filename = wx.TextCtrl(bkg)
 clear = wx.Button(bkg, label = 'CLEAR')
 
-#sizer for the horizontal box
+# sizer for the horizontal box
 hbox = wx.BoxSizer(wx.HORIZONTAL)
 hbox.Add(urlLabel, proportion = 0, flag = wx.ALIGN_CENTER | wx.TOP, border = 5)
 hbox.Add(url, proportion = 1, flag = wx.LEFT |wx.TOP | wx.RIGHT, border = 5)
 hbox.Add(submit, proportion=0, flag = wx.RIGHT | wx.TOP, border = 5)
 hbox.Add(opn, proportion = 0, flag = wx.RIGHT | wx.TOP, border = 5)
 
-#sizer for the vertical box
+# sizer for the vertical box
 vbox = wx.BoxSizer(wx.VERTICAL)
 vbox.Add(hbox, proportion = 0, flag = wx.EXPAND |wx.LEFT | wx.RIGHT, border = 5)
 vbox.Add(filenameLabel, proportion = 0, flag = wx.EXPAND | wx.LEFT, border = 5)
@@ -83,13 +82,13 @@ vbox.Add(msg, proportion = 1,
 vbox.Add(clear, flag = wx.ALIGN_RIGHT |wx.RIGHT | wx.BOTTOM, border = 5)
 bkg.SetSizer(vbox)
 
-#bind the submit button
+# bind the submit button 
 submit.Bind(wx.EVT_BUTTON, Submit)
 
-#bind the open button
+# bind the open button
 opn.Bind(wx.EVT_BUTTON, Open)
 
-#bind the clear button
+# bind the clear button
 clear.Bind(wx.EVT_BUTTON, Clear)
 
 win.Show()
