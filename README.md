@@ -17,5 +17,5 @@ import urllib.request
 Code snippes and images here
 
 ## Useful websites
-On Beautiful Soup: https://www.crummy.com/software/BeautifulSoup/bs4/doc/](https://beautiful-soup-4.readthedocs.io/en/latest/)
+On Beautiful Soup: https://www.crummy.com/software/BeautifulSoup/bs4/doc/](https://beautiful-soup-4.readthedocs.io/en/latest/)  
 On wxWidgets: https://docs.wxpython.org/
