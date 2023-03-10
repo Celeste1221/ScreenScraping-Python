@@ -1,4 +1,4 @@
-# Programmer: Mary Fischer
+# Programmer: Celeste Fischer
 # Purpose: Create a screen scraping app that lets the user enter the url and the content they want to scrape
 
 import wx
