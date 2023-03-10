@@ -5,7 +5,7 @@ import wx
 
 # define functions 
 def Submit(event):
-    # this screen scraping code is modified from a course - I added the try except and adapted it for a GUI and to write to a file
+    # The screen scraping code is modified from a course I took - I added the try except and adapted it for a GUI and to write to a file
     from bs4 import BeautifulSoup  
     import urllib.request
     try:
@@ -46,6 +46,7 @@ def Clear(event):
 
 
 # Create GUI
+
 # references: 
 # https://letscodepython.com/blog/2017/12/27/building-guis-wxpython/
 # https://wxpython.org/Phoenix/docs/html/wx.TextCtrl.html?highlight=textctrl#phoenix-title-textctrl-styles
