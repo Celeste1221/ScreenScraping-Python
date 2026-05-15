@@ -8,8 +8,6 @@ import urllib.request
 # define functions 
 def Submit(event):
     # The screen scraping code is modified from a course I took - I added the try except and adapted it for a GUI and to write to a file
-    from bs4 import BeautifulSoup  
-    import urllib.request
     try:
         website = urllib.request.urlopen(url.GetValue())
     except:
